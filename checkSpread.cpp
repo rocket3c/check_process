@@ -27,8 +27,8 @@ int sendTelegramMessage(string sendstr)
 	const string robotid = "1116069769"; //robotid
 	const string token = "AAGX0xRcq1LLDEXjXKzsaTt0rl9jfU53L94";  //telegram token
 	const string opstyle = "sendmessage";  //操作方式
-	//const string chatid = "-451359637";  // 发给个人andres(639086835405)的chatid
-	const string chatid = "-321010467"; //(server 棋牌群)
+	//const string chatid = "-451359637";  //
+	const string chatid = "-321010467"; //
 	
 	string buf;
 	buf.append(telegramboturl);
@@ -124,7 +124,7 @@ int main(int argc, char** argv)
 		pid_t pid = getProcessPidByName((const char*)process_name);
 		if(pid <= 0)
 		{
-			string sendstr = "Warning Message: 服务器(103.223.121.226)推广进程 tuiguang 未启动或退出!";
+			string sendstr = "Warning Message: 服务器进程 tuiguang 未启动或退出!";
 			sendTelegramMessage(sendstr);
 		}
 		
@@ -158,13 +158,13 @@ int main(int argc, char** argv)
 			//检测不超过6分钟
 			if(currmin <= warning_min) //0点小于6分
 			{
-        		string sendstr = "Notice Message: 服务器(103.223.121.226)日志文件 AllSpread.log 已更新!";
+        		string sendstr = "Notice Message: 服务器日志文件 AllSpread.log 已更新!";
         		sendTelegramMessage(sendstr);
         		sleep(50);	//已更新，休眠(50秒)
 			}
 			else //0点大于6分
 			{
-				string sendstr = "Warning Message: 服务器(103.223.121.226)日志文件 AllSpread.log 未正常更新!";
+				string sendstr = "Warning Message: 服务器日志文件 AllSpread.log 未正常更新!";
        			sendTelegramMessage(sendstr);
        			sleep(50);  	//已更新，休眠(50秒)
 			}
@@ -173,7 +173,7 @@ int main(int argc, char** argv)
 		&& currhour == hour && currmin == min && currhour != warning_hour ) //非0点
 		{	
 			//如果有更新，则发一条通知消息
-			string sendstr = "Notice Message: 服务器(103.223.121.226)日志文件 AllSpread.log 在非更新时间段更新!";
+			string sendstr = "Notice Message: 服务器日志文件 AllSpread.log 在非更新时间段更新!";
 			sendTelegramMessage(sendstr);
 			sleep(50);  //休眠(50秒)
 		}
